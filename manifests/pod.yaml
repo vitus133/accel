@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: accelerator
+  namespace: accelerator
+spec:
+  serviceAccount: accelerator
+  serviceAccountName: accelerator-sa
+  terminationGracePeriodSeconds: 3
+  containers:
+    - name: accelerator
+      securityContext:
+        allowPrivilegeEscalation: false
+        seccompProfile:
+          type: RuntimeDefault
+        capabilities:
+          drop:
+          - ALL
+      image: quay.io/vgrinber/accelerator:latest
+      command:
+      - /bin/bash
+      - -c
+      - "sleep inf"
