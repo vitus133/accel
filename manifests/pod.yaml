@@ -17,6 +17,7 @@ spec:
           drop:
           - ALL
       image: quay.io/vgrinber/accelerator:latest
+      imagePullPolicy: Always
       command:
       - /bin/bash
       - -c
